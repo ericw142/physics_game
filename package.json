@@ -1,0 +1,23 @@
+{
+  "name": "physics_game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "physics.js",
+  "dependencies": {
+    "paper": "^0.12.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericw142/physics_game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ericw142/physics_game/issues"
+  },
+  "homepage": "https://github.com/ericw142/physics_game#readme"
+}
