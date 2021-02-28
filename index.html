@@ -17,10 +17,13 @@
         function onFrame(event) {
             if (project.activeLayer.children[0]) {
                for(var i = 0; i < project.activeLayer.children.length; i++) {
-                   var destination = Point.random() * view.size;
-                   var vector = destination - project.activeLayer.children[i].position;
+                    var item = project.activeLayer.children[i];
 
-                   project.activeLayer.children[i].position += vector / 30;
+                    item.position.y += item.bounds.width / 1;
+
+                    if (item.bounds.bottom > view.size.height) {
+                        item.position.y = -item.bounds.width;
+                    }
                }
             } else {
                 console.log("none found")
