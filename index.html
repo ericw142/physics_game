@@ -6,9 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Physics Game</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="paper-full.js"></script>
+    <script type="text/paperscript" canvas="physicsCanvas">
 
+        var path = new Path();
+        path.strokeColor = "black";
+        
+        function onMouseDown(event) {
+            path.add(event.point);
+        }
+
+    </script>
 </head>
 <body>
-    <canvas id="physicsCanvas"></canvas>
+    <canvas id="physicsCanvas" resize></canvas>
 </body>
 </html>
