@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="paper-full.js"></script>
+    <script type="text/paperscript" canvas="combinedCanvas">
+        var rectangle = new Rectangle(new Point(-1000, 790), new Point(3000, 1000));
+        var radius = new Size(20, 20);
+        var floor = new Path.Rectangle(rectangle, radius);
+        floor.fillColor = 'black';
+
+        
+    </script>
+</head>
+<body>
+    <h1>All Particles</h1>
+    <canvas id="combinedCanvas"></canvas>
+    <a href="index.html">Individual Particles</a>
+</body>
+</html>

@@ -11,3 +11,10 @@
     height: 90vh;
     width: 100%;
 }
+
+#combinedCanvas {
+    border: 1px solid black;
+    background-color: darkgray;
+    height: 90vh;
+    width: 100%;
+}
