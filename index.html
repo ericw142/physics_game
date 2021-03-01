@@ -7,27 +7,41 @@
     <title>Physics Game</title>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="paper-full.js"></script>
-    <script type="text/paperscript" canvas="physicsCanvas">
+    <script type="text/paperscript" canvas="sandCanvas">
         var rectangle = new Rectangle(new Point(-1000, 790), new Point(3000, 1000));
         var radius = new Size(20, 20);
-        var path = new Path.Rectangle(rectangle, radius);
-        path.fillColor = 'black';
+        var floor = new Path.Rectangle(rectangle, radius);
+        floor.fillColor = 'black';
+
+        var circle = new Path.Circle(20, 20, 5);
+        circle.fillColor = 'bisque';    
+        var sand = new Symbol(circle);
 
         function onMouseDown(event) {
-            var sand = new Path.Circle(event.point, 5);
-            sand.fillColor = 'bisque';    
+            sand.place(new Point(event.point))
+        }
+
+        function onMouseUp(event) {
+            sand.place(new Point(event.point))
         }
 
         function onMouseDrag(event) {
-            var sand = new Path.Circle(event.point, 5);
-            sand.fillColor = 'bisque';    
+            sand.place(new Point(event.point))
         }
 
         function onFrame(event) {
+            if (project.activeLayer.children.length > 800) {
+                var items = project.activeLayer.children;
+                for (var x = 1; x < 100; x++) {
+                    items.splice(x, 1)
+                }
+            }
+
             if (project.activeLayer.children[1]) {
                for(var i = 1; i < project.activeLayer.children.length; i++) {
                     var item = project.activeLayer.children[i];
-                    if (item.position.y > 780) {
+            
+                    if (item.intersects(floor)) {
                         
                     } else {
                         item.position.y += item.bounds.width / 1;
@@ -39,8 +53,57 @@
         }
 
     </script>
+    <script type="text/paperscript" canvas="waterCanvas">
+        var rectangle = new Rectangle(new Point(-1000, 790), new Point(3000, 1000));
+        var radius = new Size(20, 20);
+        var floor = new Path.Rectangle(rectangle, radius);
+        floor.fillColor = 'black';
+        floor.rotate(7);
+
+        var circle = new Path.Circle(20, 20, 5);
+        circle.fillColor = 'aqua';    
+        var water = new Symbol(circle);
+
+        function onMouseDown(event) {
+            water.place(new Point(event.point))
+        }
+
+        function onMouseUp(event) {
+            water.place(new Point(event.point))
+        }
+
+        function onMouseDrag(event) {
+            water.place(new Point(event.point))
+        }
+
+        function onFrame(event) {
+            if (project.activeLayer.children.length > 800) {
+                var items = project.activeLayer.children;
+                for (var x = 1; x < 100; x++) {
+                    items.splice(x, 1)
+                }
+            }
+
+            if (project.activeLayer.children[1]) {
+               for(var i = 1; i < project.activeLayer.children.length; i++) {
+                    var item = project.activeLayer.children[i];
+            
+                    if (item.intersects(floor)) {
+                        item.position.x += item.bounds.width /10;
+                    } else {
+                        item.position.y += item.bounds.width / 1;
+                    }
+               }
+            } else {
+                console.log("none found")
+            }
+        }
+    </script>
 </head>
 <body>
-    <canvas id="physicsCanvas"></canvas>
+    <h1>Sand Physics</h1>
+    <canvas id="sandCanvas"></canvas>
+    <h1>Water Physics</h1>
+    <canvas id="waterCanvas"></canvas>
 </body>
 </html>
